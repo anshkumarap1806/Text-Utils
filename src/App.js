@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
 
+import React, { Component } from 'react'
+import './App.css';
+import About from './components/About';
+import Navbar from './components/Navbar';
+import Textform from './components/Textform';
+import Alert from './components/Alert';
+import { useState } from 'react'
+// import { BrowserRouter ,Router,Route,Routes } from 'react-router-dom';
 function App() {
+  const [mode,smode]=useState('light');
+  const [alert,setalert]=useState(null);
+  const salert=(message,type)=>{
+    setalert({
+      message:message,
+      type:type
+    })
+    setTimeout(()=>{
+      setalert(null);
+    },1500);
+  }
+  
+  const theme=()=>{
+    if(mode==='light'){
+    smode('dark')
+    document.title='Text-Util Dark-Mode'
+    document.body.style.backgroundColor = 'grey';
+    salert("Dark mode enabled","success")
+  }
+  else {
+    smode('light')
+    document.body.style.backgroundColor = 'white';
+    salert("Light mode enabled","success")
+    document.title='Text-Util Light-Mode'
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <> 
+<Navbar title="Text-Utils" about="About us" mode={mode} theme={theme}/>
+<Alert alert={alert}/>
+    <Textform heading="Enter text" mode={mode} salert={salert}/>
+    </>
+    
   );
 }
 
