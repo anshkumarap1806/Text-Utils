@@ -43,7 +43,7 @@ export default function Textform(props) {
       
       let c=0;
       for(var i=0;i<text.length;i++){
-        if(text.charAt(i)===" "){
+        if(text.charAt(i)===" "||f===""||f===" " ||r===""||r===" "){
           c++;
         }
       }
@@ -127,7 +127,7 @@ export default function Textform(props) {
     <p></p>
     <textarea className="form-control" placeholder='Word to replace ' id="exampleFormControlTextarea3" rows="1" >
 </textarea>
-<button className="btn btn-primary mt-2" onClick={rclick}>Replace Text
+<button disabled ={text.length===0} className="btn btn-primary mt-2" onClick={rclick}>Replace Text
     </button>
     </div>
   </>
