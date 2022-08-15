@@ -98,6 +98,7 @@ export default function Textform(props) {
     
   return (
     <>
+    <div className="container">
     <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
     <h1>{props.heading}</h1>
     <div className="mb-3">
@@ -128,6 +129,7 @@ export default function Textform(props) {
 </textarea>
 <button className="btn btn-primary mt-2" onClick={rclick}>Replace Text
     </button>
+    </div>
   </>
   )
 }
